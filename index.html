@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/bootstrap.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Lista de tareas</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">Gestor de Tareas</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="./pages/error404.html"
+                  >Nosotros</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container my-4">
+      <div class="d-flex justify-content-between">
+        <h1>Gestor de Tareas</h1>
+        <button class="btn btn-primary" id="btnAgregar">Agregar</button>
+      </div>
+      <section class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Tarea</th>
+              <th scope="col">Fecha de inicio</th>
+              <th scope="col">Fecha a terminar</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Prioridad</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+    <div
+      class="modal fade"
+      id="modalTarea"
+      tabindex="-1"
+      aria-labelledby="modalTareaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalTareaLabel">Agregar Tarea</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="tarea" class="form-label">Tarea</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tarea"
+                  aria-describedby="Ingresar tarea"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="EJ: Hacer la compra"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="fechaI" class="form-label">Fecha de Inicio</label>
+                <input type="text" class="form-control" id="fechaI"
+                minlength="2" maxlength="50" placeholder="Ej:10/10/2025" " />
+              </div>
+              <div class="mb-3">
+                <label for="fechaI" class="form-label">Fecha a terminar:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fechaF"
+                  placeholder="20/10/2025"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="estado"
+                  placeholder="Ej: En progreso, Completado, Pendiente"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="prioridad" class="form-label">Prioridad</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="prioridad"
+                  placeholder="Ej: Importante, Normal, Baja"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
+    <script src="JS/bootstrap.min.js"></script>
+    <script src="js/app.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js
+"></script>
+  </body>
+</html>
