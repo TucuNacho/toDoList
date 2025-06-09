@@ -32,6 +32,9 @@ export default class Paginas {
   get prioridad() {
     return this.#prioridad;
   }
+  get id() {
+    return this.#id;
+  }
 
   set pagina(nuevaPagina) {
     this.#pagina = nuevaPagina;
@@ -55,7 +58,7 @@ export default class Paginas {
   toJSON() {
     return {
       id: this.#id,
-      tarea: this.#pagina,
+      pagina: this.#pagina,
       fechaInicio: this.#fechaInicio,
       fechaTerminar: this.#fechaTerminar,
       estado: this.#estado,

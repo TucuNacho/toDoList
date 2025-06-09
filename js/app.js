@@ -1,4 +1,4 @@
-import Paginas from "./classeTarea.js";
+import Paginas from "./crearWeb.js";
 
 //funciones
 const abrirModal = () => {
@@ -31,12 +31,14 @@ const guardarLocalStorage = () => {
 };
 
 const cargarWeb = () => {
-  if (toDoList > 0) {
+  if (toDoList.length !== 0) {
     toDoList.map((web, indice) => dibujarFila(web, indice + 1));
   }
 };
 
 const dibujarFila = (web, indice) => {
+  console.log(web);
+
   tablaWeb.innerHTML += `<tr>
               <th scope="row">${indice}</th>
               <td>${web.pagina}</td>
@@ -45,11 +47,34 @@ const dibujarFila = (web, indice) => {
               <td>${web.estado}</td>
               <td>${web.prioridad}</td>
               <td>
-                <button class="btn btn-warning"onclick="prepararContacto('${web.id}')" >Editar</button>
-                <button class="btn btn-danger" onclick="eliminarContacto('${web.id}')" >Borrar</button>
-                <button class="btn btn-info" onclick="verContacto('${web.id}')">Ver</button>
+                <button class="btn btn-warning"onclick="prepararPagina('${web.id}')" >Editar</button>
+                <button class="btn btn-danger" onclick="eliminarPagina('${web.id}')" >Borrar</button>
+                <button class="btn btn-info" onclick="verPagina('${web.id}')">Ver</button>
               </td>
             </tr>`;
+};
+
+window.eliminarPagina = (id) => {
+  Swal.fire({
+    title: "Estás seguro?",
+    text: "No podras revertir esta accion!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#78c2ad",
+    cancelButtonColor: "#ff7851",
+    confirmButtonText: "Si,Borrar",
+    cancelButtonText: "No,Salir",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const posicionWebEncontrada = toDoList.findIndex(
+        (pagina) => pagina.id === id
+      );
+      toDoList.splice(posicionWebEncontrada, 1);
+      guardarLocalStorage();
+      tablaWeb.children[posicionWebEncontrada].remove();
+      //actualizar los índices de las filas restan
+    }
+  });
 };
 // Variables
 const BtnAgregar = document.getElementById("btnAgregar");
@@ -60,7 +85,7 @@ const inputFechaTermino = document.getElementById("fechaF");
 const inputEstado = document.getElementById("estado");
 const inputPrioridad = document.getElementById("prioridad");
 const tablaWeb = document.querySelector("tbody");
-const toDoList = [];
+const toDoList = JSON.parse(localStorage.getItem("toDoListKey")) || [];
 
 // Eventos
 BtnAgregar.addEventListener("click", abrirModal);
