@@ -19,6 +19,8 @@ const crearWeb = () => {
   // dibujar la fila en la tabla
   dibujarFila(lista, toDoList.length);
   resetForm();
+  // cerrar el modal
+  modalWeb.hide();
 };
 
 const resetForm = () => {
@@ -72,6 +74,14 @@ window.eliminarPagina = (id) => {
       guardarLocalStorage();
       tablaWeb.children[posicionWebEncontrada].remove();
       //actualizar los índices de las filas restan
+      const filasRestantes = tablaWeb.children
+      for (let i = 0; i < filasRestantes.length; i++) {
+        const celdaIndice = filasRestantes[i].querySelector("th")
+        if (celdaIndice) {
+          celdaIndice.textContent = i + 1; // Actualiza el índice de la fila
+
+        }
+      }
     }
   });
 };
